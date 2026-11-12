@@ -3,7 +3,7 @@ import { getFavoriteMovies } from "../utils/movieFunctions"
 
 /* 
   Du behöver köra npm i men
-  Jag gort för att kunna köra test: 
+  Jag gjort för att kunna köra test: 
 
   installerat: 
   npm install -D vitest
@@ -42,6 +42,23 @@ import { getFavoriteMovies } from "../utils/movieFunctions"
 
  //should return Pulp Fiction as the second movie
 
+describe('getFavoriteMovies', ()=>{
+  const movies = [
+        { id: 1, title: 'The Matrix', isFavorite: false },
+        { id: 2, title: 'Jurassic Park', isFavorite: false },
+        { id: 3, title: 'Pulp Fiction', isFavorite: true }
+    ]
+    const result = getFavoriteMovies(movies)
+    test('should return two favorite movies', ()=>{
+      expect(result).toHaveLength(2)
+    })
+    test('should return The Matrix as the first movie', ()=>{
+      expect(result[0].title).toBe('The Matrix')
+    })
+    test('should return Pulp Fiction as the second movie', ()=>{
+      expect(result[1].title).toBe('Pulp Fiction')
+    })
+})
 
 
 
